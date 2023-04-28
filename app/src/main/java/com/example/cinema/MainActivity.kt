@@ -3,6 +3,7 @@ package com.example.cinema
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
@@ -55,10 +56,10 @@ class MainActivity : AppCompatActivity() {
 
             // ...
         } else {
+            Toast.makeText(this@MainActivity, "Something wrong with registration", Toast.LENGTH_LONG).show()
             // Sign in failed. If response is null the user canceled the
-            // sign-in flow using the back button. Otherwise check
-            // response.getError().getErrorCode() and handle the error.
-            // ...
+           
+
         }
     }
 

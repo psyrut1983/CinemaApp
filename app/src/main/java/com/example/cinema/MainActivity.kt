@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     private val signInLauncher = registerForActivityResult( //создали объект авторизации
         FirebaseAuthUIActivityResultContract()
     ) { res ->
-        this.onSignInResult(res)  //запуск экрана
+        this.onSignInResult(res)  //запуск экрана авторизации
     }
     private lateinit var database: DatabaseReference
 
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         signInLauncher.launch(signInIntent)
     }
     private fun onSignInResult(result: FirebaseAuthUIAuthenticationResult) {
-        val response = result.idpResponse
+        //val response = result.idpResponse
         if (result.resultCode == RESULT_OK) {
             // Successfully signed in
             val authuser = FirebaseAuth.getInstance().currentUser
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
             // ...
         } else {
             Toast.makeText(this@MainActivity, "Something wrong with registration", Toast.LENGTH_LONG).show()
-            // Sign in failed. If response is null the user canceled the
+            // Sign in failed. If response is null the user canceled autorization
            
 
         }

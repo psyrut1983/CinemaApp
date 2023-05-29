@@ -28,13 +28,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        database = Firebase.database.reference   //инциализация базы данных
+        //
+        val intentToMoviesActivity = Intent(this, MoviesActivity::class.java)
+        startActivity(intentToMoviesActivity)
+        //
+//        database = Firebase.database.reference   //инциализация базы данных
 
-        val signInIntent = AuthUI.getInstance()
-            .createSignInIntentBuilder()
-            .setAvailableProviders(providers)
-            .build()
-        signInLauncher.launch(signInIntent)
+//        val signInIntent = AuthUI.getInstance()
+//            .createSignInIntentBuilder()
+//            .setAvailableProviders(providers)
+//            .build()
+//        signInLauncher.launch(signInIntent)
+//
+
+
     }
     private fun onSignInResult(result: FirebaseAuthUIAuthenticationResult) {
         //val response = result.idpResponse

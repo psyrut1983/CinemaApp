@@ -35,12 +35,12 @@ class MoviesActivity : AppCompatActivity() {
         val apiInterface = ApiInterface.create().getMovies("most_pop_movies")
 
         //apiInterface.enqueue( Callback<List<Movie>>())
-        apiInterface.enqueue( object : Callback<movies> {
+        apiInterface.enqueue( object : Callback<movies>, CustomAdapter.ItemClickListener {
             override fun onResponse(call: Call<movies>?, response: Response<movies>?) {
 
                 Log.d("testLogs", "Onresponce sucsess ${response?.body()?.results}")
                 // This will pass the ArrayList to our Adapter
-                val adapter = CustomAdapter(response?.body()?.results)
+                val adapter = CustomAdapter(response?.body()?.results,this)
 
                 // Setting the Adapter with the recyclerview
                 recyclerview.adapter = adapter
@@ -51,6 +51,10 @@ class MoviesActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<movies>?, t: Throwable?) {
                 Log.d("testLogs", "OnFailure: ${t?.message}")
+            }
+
+            override fun onItemClick(position: Int) {
+                Log.d("Click","Clicked position $position")
             }
         })
 
